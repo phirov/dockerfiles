@@ -9,5 +9,5 @@ ENV GUNICORN_VERSION 19.6.0
 RUN apk add --no-cache python-dev py-pip && \
     apk add --no-cache --virtual .build-deps g++ && \
     ln -s /usr/include/locale.h /usr/include/xlocale.h && \
-    pip install --no-cache-dir gunicorn>=$GUNICORN_VERSION && \
+    pip install gunicorn==$GUNICORN_VERSION && \
     apk del .build-deps
