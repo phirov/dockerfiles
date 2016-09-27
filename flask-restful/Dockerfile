@@ -11,6 +11,6 @@ RUN apk add --no-cache python-dev py-pip && \
     apk add --no-cache --virtual .build-deps g++ && \
     ln -s /usr/include/locale.h /usr/include/xlocale.h && \
     pip install flask-restful jmespath pymongo && \
-    pip install pandas>=$PANDAS_VERSION && \
-    pip install gunicorn>=$GUNICORN_VERSION && \
+    pip install pandas==$PANDAS_VERSION && \
+    pip install gunicorn==$GUNICORN_VERSION && \
     apk del .build-deps
