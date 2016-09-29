@@ -1,6 +1,8 @@
 # Docker-SMTP
 [![](https://images.microbadger.com/badges/image/namshi/smtp.svg)](https://microbadger.com/images/namshi/smtp)
 
+Folked from [docker-smtp](https://github.com/namshi/docker-smtp)
+
 This is a SMTP docker container for sending emails. You can also relay emails to gmail and amazon SES.
 
 ## Environment variables
@@ -35,4 +37,3 @@ Example:
  * SMARTHOST_USER=myuser
  * SMARTHOST_PASSWORD=secret
  * SMARTHOST_ALIASES=*.mysmtp.com
-
