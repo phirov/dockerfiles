@@ -5,13 +5,14 @@ FROM continuumio/anaconda
 MAINTAINER phirov@163.com
 
 ENV BOKEH_APP demo.py
+ENV APP_URL bokeh-demo-goldwind.myalauda.cn
+ENV APP_PORT 5006
 
 EXPOSE 5006
 WORKDIR /bokeh
 
-RUN conda install -y bokeh
-    
-ADD ./demo.py /bokeh/
+ADD demo.py /bokeh/
+ADD entrypoint.sh /bokeh/
 
-CMD ["bokeh", "serve", "BOKEH_APP"]
+CMD ["sh", "entrypoint.sh"]
 
