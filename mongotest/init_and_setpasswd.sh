@@ -7,6 +7,14 @@ export USER=${MONGODB_USER:-$ADMIN}
 export PASS=${MONGODB_PASS:-$(pwgen -s 12 1)}
 _word=$( [ ${MONGODB_PASS} ] && echo "preset" || echo "random" )
 
+echo ""
+echo "ADMIN=${ADMIN}"
+echo "DATABASE=${DATABASE}"
+echo "USER=${USER}"
+echo "PASS=${PASS}"
+echo ""
+
+
 RET=1
 while [[ RET -ne 0 ]]; do
     echo "=> Waiting for confirmation of MongoDB service startup"
@@ -15,11 +23,11 @@ while [[ RET -ne 0 ]]; do
     RET=$?
 done
 
-echo "=> Creating an ${USER} user with a ${_word} password in MongoDB"
-mongo $ADMIN --eval "db.createUser({user: '$USER', pwd: '$PASS', roles:[{role:'root',db:$ADMIN}]});"
+echo "=> Creating an ${USER} user with a ${_word} password in db ${ADMIN}"
+mongo $ADMIN --eval "db.createUser({user: '$USER', pwd: '$PASS', roles:[{role:'root',db:'$ADMIN'}]});"
 
 if [ "$DATABASE" != $ADMIN ]; then
-    echo "=> Creating an ${USER} user with a ${_word} password in MongoDB"
+    echo "=> Creating an ${USER} user with a ${_word} password in db ${DATABASE}"
     mongo $ADMIN -u $USER -p $PASS << EOF
 use $DATABASE
 db.createUser({user: '$USER', pwd: '$PASS', roles:[{role:'dbOwner',db:'$DATABASE'}]})
