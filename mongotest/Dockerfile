@@ -13,15 +13,15 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
 VOLUME /data/db
 
 ENV AUTH yes
-ENV MONGODB_USER admin
-ENV MONGODB_DATABASE admin
-ENV MONGODB_PASS admin123
-ENV MONGODB_WORKDB test
+
+#ENV MONGODB_USER admin
+ENV MONGODB_DATABASE test
+#ENV MONGODB_PASS admin123
 
 ENV STORAGE_ENGINE wiredTiger
 ENV JOURNALING yes
 
-COPY *.sh /
+COPY . /
 
 EXPOSE 27017 28017
 

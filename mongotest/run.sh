@@ -17,12 +17,9 @@ fi
 
 $cmd &
 
-if [ ! -f /data/db/.mongodb_password_set ]; then
-    /set_mongodb_password.sh
+if [ ! -f /data/db/.init_passwd_set ]; then
+    /init_and_setpasswd.sh
 fi
 
-if [ ! -f /data/db/.mongodb_init_set ]; then
-    /init_collections.sh
-fi
 
 fg
